@@ -1,7 +1,6 @@
 import { RaisedButton, Message } from "../components";
 
 export default function Chat({ user, signout }) {
-  console.log(signout);
   return (
     <div className="chat container">
       <div className="sider">
