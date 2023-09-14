@@ -1,13 +1,13 @@
-import { useFirebase } from "./firebase";
+import { useFirebase, FirebaseContext } from "./firebase";
 import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 
 function App() {
-  const { user, signin, signout } = useFirebase();
-  return user ? (
-    <Chat user={user} signout={signout} />
-  ) : (
-    <Login signin={signin} />
+  const firebase = useFirebase();
+  return (
+    <FirebaseContext.Provider value={firebase}>
+      {firebase?.user ? <Chat /> : <Login />}
+    </FirebaseContext.Provider>
   );
 }
 
